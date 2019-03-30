@@ -2,8 +2,13 @@
   "name": "Bookmark Auto-Organizer",
   "version": "0.1",
   "description": "organizes bookmarks, work in progress",
+  "background"{
+  "scripts": ["background.js"],
+  "persistent": false
+  },
   "permissons": [
-    "bookmarks"
+    "bookmarks",
+    "storage"
   ],
   "manifest_version": 2
 }
