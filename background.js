@@ -38,7 +38,7 @@ function processBookmarks() {
   chrome.bookmarks.getTree( process_bookmark );
 }
 
-function stackOverflowProcessNode() {
+function stackProcessNode() {
   chrome.bookmarks.getTree(function(itemTree){
       itemTree.forEach(function(item){
           processNode(item);
