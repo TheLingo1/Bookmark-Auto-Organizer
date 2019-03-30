@@ -3,10 +3,11 @@ bookmarkBar = [];
 bookmarkBarIds = [];
 bookmarkBarUrls = [];
 arrayWithFolder = [];
+bar = chrome.bookmarks;
 
 
 function listBookmarkTree() {
-  chrome.bookmarks.getTree(
+  bar.getTree(
     function(bookmarkArray) {
       console.log(bookmarkArray)
     }
@@ -14,8 +15,7 @@ function listBookmarkTree() {
 }
 
 function getBookmarkBarChildren() {
-  bookmarkBarUrls = [];
-  chrome.bookmarks.getChildren(
+  bar.getChildren(
     "1",
     function(bookmarkArray) {
       //console.log(bookmarkArray);
@@ -47,11 +47,11 @@ function process_bookmark(bookmarks) {
 
 function processBookmarks() {
   console.log("listing bookmarks: " );
-  chrome.bookmarks.getTree( process_bookmark );
+  bar.getTree( process_bookmark );
 }
 
 function stackProcessNode() {
-  chrome.bookmarks.getTree(function(itemTree){
+  bar.getTree(function(itemTree){
       itemTree.forEach(function(item){
           processNode(item);
       });
@@ -74,19 +74,21 @@ function stackProcessNode() {
 
 getBookmarkBarChildren(); // This gets all of the bookmarkTreeNodes in the Bookmark Bar, and saves them to an array, so that th
 
-//
 chrome.tabs.onCreated.addListener(function(tab){
     if (tab.url) {
-      if (bookmarkBarUrls.includes(tab.url)) {
-        var Pos = bookmarkBarUrls.indexOf(tab.url)
-        console.log("Yes! " + Pos)
-      } else {
-        console.log("No!")
-      }
+
+        if (bookmarkBarUrls.includes(tab.url)) {
+
+            
+
+            var Pos = bookmarkBarUrls.indexOf(tab.url)
+            console.log("Yes! " + Pos)
+        } else {
+            console.log("No!")
+        }
+
     }
 });    
-
-//
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
 //gets bookmark's position
     if (tab.url) {
@@ -96,6 +98,18 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
       } else {
         console.log("No!")
       }
+    if (changeInfo.url) {
+
+        if (bookmarkBarUrls.includes(tab.url)) {
+
+            
+
+            var Pos = bookmarkBarUrls.indexOf(tab.url)
+            console.log("Yes! " + Pos)
+        } else {
+            console.log("No!")
+        }
+
     }
 
 chrome.bookmarks.move(Pos.id, )
