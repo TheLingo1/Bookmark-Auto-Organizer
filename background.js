@@ -12,12 +12,18 @@ function listBookmarkTree() {
   );
 }
 
-function listBookmarkBarChildren() {
+function getBookmarkBarChildren() {
   chrome.bookmarks.getChildren(
     "1",
     function(bookmarkArray) {
-      console.log(bookmarkArray);
+      //console.log(bookmarkArray);
       bookmarkBar = bookmarkArray;
+      for (i = 0; i < bookmarkArray.length; i++) {
+        bookmarkBarIds.push(bookmarkArray[i].id);
+        bookmarkBarUrls.push(bookmarkArray[i].url);
+      }
+      //console.log(bookmarkBarIds);
+      //console.log(bookmarkBarUrls);
     }
   )
 }
@@ -63,3 +69,5 @@ function stackProcessNode() {
       }
   }
 }
+
+getBookmarkBarChildren(); // This gets all of the bookmarkTreeNodes in the Bookmark Bar, and saves them to an array, so that th
