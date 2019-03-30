@@ -4,6 +4,7 @@ bookmarkBarIds = [];
 bookmarkBarUrls = [];
 arrayWithFolder = [];
 
+//gets every node in bookmark tree
 function listBookmarkTree() {
   chrome.bookmarks.getTree(
     function(bookmarkArray) {
@@ -12,7 +13,8 @@ function listBookmarkTree() {
   );
 }
 
-function listBookmarkBarChildren() {
+//gets the nodes in bookmark bar (folder and bookmarks)
+function getBookmarkBarChildren() {
   chrome.bookmarks.getChildren(
     "1",
     function(bookmarkArray) {
@@ -22,8 +24,8 @@ function listBookmarkBarChildren() {
   )
 }
 
+//gets every bookmark in the whole tree (even inside folders)
 function process_bookmark(bookmarks) {
-
   for (var i =0; i < bookmarks.length; i++) {
       var bookmark = bookmarks[i];
       if (bookmark.url) {
@@ -37,10 +39,12 @@ function process_bookmark(bookmarks) {
   }
 }
 
+//calls process_bookmark with chrome's bookmarks
 function processBookmarks() {
   console.log("listing bookmarks: " );
   chrome.bookmarks.getTree( process_bookmark );
 }
+
 
 function stackProcessNode() {
   chrome.bookmarks.getTree(function(itemTree){
