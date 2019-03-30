@@ -79,7 +79,7 @@ chrome.tabs.onCreated.addListener(function(tab){
 
         if (bookmarkBarUrls.includes(tab.url)) {
 
-            
+
 
             var Pos = bookmarkBarUrls.indexOf(tab.url)
             console.log("Yes! " + Pos)
@@ -88,21 +88,14 @@ chrome.tabs.onCreated.addListener(function(tab){
         }
 
     }
-});    
+});
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
 //gets bookmark's position
-    if (tab.url) {
-      if (bookmarkBarUrls.includes(tab.url)) {
-        var Pos = bookmarkBarUrls.indexOf(tab.url)
-        console.log("Yes! " + Pos)
-      } else {
-        console.log("No!")
-      }
     if (changeInfo.url) {
 
         if (bookmarkBarUrls.includes(tab.url)) {
 
-            
+
 
             var Pos = bookmarkBarUrls.indexOf(tab.url)
             console.log("Yes! " + Pos)
@@ -112,7 +105,9 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
 
     }
 
-    bar.move("137", {index: 6});
-    
 
-}); 
+
+
+});
+
+bar.move("137", {index: 6});
