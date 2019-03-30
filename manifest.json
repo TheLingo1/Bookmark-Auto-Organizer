@@ -2,5 +2,8 @@
   "name": "Bookmark Auto-Organizer",
   "version": "0.1",
   "description": "organizes bookmarks, work in progress",
+  "permissons": [
+    "bookmarks"
+  ],
   "manifest_version": 2
 }
