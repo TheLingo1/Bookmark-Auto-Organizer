@@ -4,7 +4,6 @@ bookmarkBarIds = [];
 bookmarkBarUrls = [];
 arrayWithFolder = [];
 
-//gets every node in bookmark tree
 function listBookmarkTree() {
   chrome.bookmarks.getTree(
     function(bookmarkArray) {
@@ -13,7 +12,6 @@ function listBookmarkTree() {
   );
 }
 
-//gets the nodes in bookmark bar (folder and bookmarks)
 function getBookmarkBarChildren() {
   chrome.bookmarks.getChildren(
     "1",
@@ -30,27 +28,25 @@ function getBookmarkBarChildren() {
   )
 }
 
-//gets every bookmark in the whole tree (even inside folders)
 function process_bookmark(bookmarks) {
-  for (var i =0; i < bookmarks.length; i++) {
-      var bookmark = bookmarks[i];
-      if (bookmark.url) {
-        arrayWithFolder.push(bookmark.url);
-        console.log(bookmark.title + ": " + bookmark.url);
-      }
 
-      if (bookmark.children) {
-         process_bookmark(bookmark.children);
-      }
-  }
+    for (var i =0; i < bookmarks.length; i++) {
+        var bookmark = bookmarks[i];
+        if (bookmark.url) {
+          arrayWithFolder.push(bookmark.url);
+          console.log(bookmark.title + ": " + bookmark.url);
+        }
+
+        if (bookmark.children) {
+            process_bookmark(bookmark.children);
+        }
+    }
 }
 
-//calls process_bookmark with chrome's bookmarks
 function processBookmarks() {
   console.log("listing bookmarks: " );
   chrome.bookmarks.getTree( process_bookmark );
 }
-
 
 function stackProcessNode() {
   chrome.bookmarks.getTree(function(itemTree){
@@ -74,4 +70,37 @@ function stackProcessNode() {
   }
 }
 
-getBookmarkBarChildren(); // This gets all of the bookmarkTreeNodes in the Bookmark Bar, and saves them to an array, so that that each URL the user visits can be checked against the array of bookmarked URLs.
+getBookmarkBarChildren(); // This gets all of the bookmarkTreeNodes in the Bookmark Bar, and saves them to an array, so that th
+
+chrome.tabs.onCreated.addListener(function(tab){
+    if (tab.url) {
+
+        if (bookmarkBarUrls.includes(tab.url)) {
+
+            
+
+            var Pos = bookmarkBarUrls.indexOf(tab.url)
+            console.log("Yes! " + Pos)
+        } else {
+            console.log("No!")
+        }
+
+    }
+});    
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
+    if (tab.url) {
+
+        if (bookmarkBarUrls.includes(tab.url)) {
+
+            
+
+            var Pos = bookmarkBarUrls.indexOf(tab.url)
+            console.log("Yes! " + Pos)
+        } else {
+            console.log("No!")
+        }
+
+    }
+    
+
+}); 
