@@ -1,8 +1,6 @@
-var visitedURLs = [];
-bookmarkBar = [];
+var bookmarkBar = [];
 bookmarkBarIds = [];
 bookmarkBarUrls = [];
-arrayWithFolder = [];
 bar = chrome.bookmarks;
 protectedBookmarks = 1;
 
@@ -18,14 +16,11 @@ function getBookmarkBarChildren() {
   bar.getChildren(
     "1",
     function(bookmarkArray) {
-      //console.log(bookmarkArray);
       bookmarkBar = bookmarkArray;
       for (i = 0; i < bookmarkArray.length; i++) {
         bookmarkBarIds.push(bookmarkArray[i].id);
         bookmarkBarUrls.push(bookmarkArray[i].url);
       }
-      //console.log(bookmarkBarIds);
-      //console.log(bookmarkBarUrls);
     }
   )
 }
