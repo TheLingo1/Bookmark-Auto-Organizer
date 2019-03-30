@@ -1,7 +1,7 @@
 {
   "name": "Bookmark Auto-Manager",
 	"description": "Sorts your bookmarks from recently used to least used.",
-  "version": "0.5",
+  "version": "0.7",
   "background": {
     "scripts": ["background.js"],
     "persistent": false
@@ -11,8 +11,5 @@
 		"storage",
     "tabs"
   ],
-	"browser_action": {
-		"default_popup": "popup.html"
-	},
 	"manifest_version": 2
 }
