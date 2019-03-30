@@ -70,4 +70,4 @@ function stackProcessNode() {
   }
 }
 
-getBookmarkBarChildren(); // This gets all of the bookmarkTreeNodes in the Bookmark Bar, and saves them to an array, so that th
+getBookmarkBarChildren(); // This gets all of the bookmarkTreeNodes in the Bookmark Bar, and saves them to an array, so that that each URL the user visits can be checked against the array of bookmarked URLs.
