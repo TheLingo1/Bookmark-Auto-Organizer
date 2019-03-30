@@ -1,20 +1,17 @@
 {
-    "name": "Bookmark auto organizer",
-    "version": "0.5",
-    "description": "Sorts Bookmarks from most used to least used",
-    "background": {
-        "scripts": ["background.js"],
-        "persistent": false
-    },
-    "permissions": [
-        "bookmarks",
-        "storage",
-        "tabs"
-    ],
-    "browser_action": {
-      "default_action": "popup.html"
-    },
-    "manifest_version": 2
-
-
+  "name": "Bookmark Auto-Manager",
+	"description": "Sorts your bookmarks from recently used to least used.",
+  "version": "0.5",
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "permissions": [
+    "bookmarks",
+		"storage"
+  ],
+	"browser_action": {
+		"default_popup": "popup.html"
+	},
+	"manifest_version": 2
 }
