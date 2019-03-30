@@ -75,28 +75,40 @@ getBookmarkBarChildren(); // This gets all of the bookmarkTreeNodes in the Bookm
 
 chrome.tabs.onCreated.addListener(function(tab){
     if (tab.url) {
+
         if (bookmarkBarUrls.includes(tab.url)) {
+
+            
+
             var Pos = bookmarkBarUrls.indexOf(tab.url)
             console.log("Yes! " + Pos)
         } else {
             console.log("No!")
         }
+
     }
-});
+});    
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
+    var Pos;
     if (changeInfo.url) {
+
         if (bookmarkBarUrls.includes(tab.url)) {
-            var Pos = bookmarkBarUrls.indexOf(tab.url)
+
+            
+
+            Pos = bookmarkBarUrls.indexOf(tab.url)
             console.log("Yes! " + Pos)
+            console.log(bookmarkBarIds[Pos])
+
+            bar.move(bookmarkBarIds[Pos], {index: 0})
+
         } else {
             console.log("No!")
         }
+
     }
+   
+    
 
-    // bar.move("137", {index: 6})
+}); 
 
-
-
-});
-
-bar.move("137", {index: 6});
