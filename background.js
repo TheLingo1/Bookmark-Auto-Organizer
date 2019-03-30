@@ -37,3 +37,21 @@ function processBookmarks() {
   console.log("listing bookmarks: " );
   chrome.bookmarks.getTree( process_bookmark );
 }
+
+function stackOverflowProcessNode() {
+  chrome.bookmarks.getTree(function(itemTree){
+      itemTree.forEach(function(item){
+          processNode(item);
+      });
+  });
+
+  function processNode(node) {
+      // recursively process child nodes
+      if(node.children) {
+          node.children.forEach(function(child) { processNode(child); });
+      }
+
+      // print leaf nodes URLs to console
+      if(node.url) { console.log(node.url); }
+  }
+}
