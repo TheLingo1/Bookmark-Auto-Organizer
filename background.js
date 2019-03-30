@@ -112,7 +112,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
 
     }
 
-chrome.bookmarks.move(Pos.id, )
+
     
 
 }); 
