@@ -3,19 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <script src="popup.js"></script>
   </head>
   <body width="100" height = "100">
       <h2>Settings:</h2>
     <h4>Number of protected bookmarks:</h4>
     <input id="numberInput" type="number" min="0">
     <button id="button" onclick="setIndex()">Save</button>
-    <script>
-        var numIndex;
-        function setIndex(){
-             numIndex = document.getElementById("numberInput").value;
-            chrome.storage.sync.set({"Key": numIndex}, function(){
-            console.log("number stored")});
-        }
-    </script>
   </body>
 </html>
