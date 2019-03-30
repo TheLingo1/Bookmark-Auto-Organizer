@@ -1,18 +1,17 @@
 {
-  "name": "Bookmark Auto-Organizer",
-  "version": "0.1",
-  "description": "organizes bookmarks, work in progress",
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": false
-  },
-  "permissions": [
-    "bookmarks",
-    "storage",
-    "tabs"
-  ],
-  "browser_action": {
-    "default_action": "popup.html"
-  },
-  "manifest_version": 2
+    "name": "Bookmark auto organizer",
+    "version": "0.5",
+    "description": "Sorts Bookmarks from most used to least used",
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+    "permissions": [
+        "bookmarks",
+        "storage",
+        "tabs"
+    ],
+    "manifest_version": 2
+
+
 }
