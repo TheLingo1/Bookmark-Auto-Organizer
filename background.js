@@ -4,6 +4,7 @@ bookmarkBarIds = [];
 bookmarkBarUrls = [];
 arrayWithFolder = [];
 
+
 function listBookmarkTree() {
   chrome.bookmarks.getTree(
     function(bookmarkArray) {
@@ -87,6 +88,7 @@ chrome.tabs.onCreated.addListener(function(tab){
 
 //
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
+//gets bookmark's position
     if (tab.url) {
       if (bookmarkBarUrls.includes(tab.url)) {
         var Pos = bookmarkBarUrls.indexOf(tab.url)
@@ -95,10 +97,8 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
         console.log("No!")
       }
     }
+
+chrome.bookmarks.move(Pos.id, )
     
 
 }); 
-
-function organizeBar(){
-
-}
