@@ -4,6 +4,7 @@ bookmarkBarIds = [];
 bookmarkBarUrls = [];
 arrayWithFolder = [];
 bar = chrome.bookmarks;
+protectedBookmarks = 1;
 
 function listBookmarkTree() {
   bar.getTree(
@@ -88,7 +89,8 @@ chrome.tabs.onCreated.addListener(function(tab){
 
     }
 });
-chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
+
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     var Pos;
     if (changeInfo.url) {
 
@@ -100,11 +102,17 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
             console.log("Yes! " + Pos)
             console.log(bookmarkBarIds[Pos])
 
-            bar.move(bookmarkBarIds[Pos], {index: 0})
+            bar.move(bookmarkBarIds[Pos], {index: protectedBookmarks})
 
         } else {
             console.log("No!")
         }
 
     }
+});
+
+chrome.bookmarks.onCreated.addListener(function(bookmarkId, bookmark) {
+  bookmarkBarIds.push(bookmarkId);
+  bookmarkBarUrls.push(bookmark.url);
+  bar.move(bookmarkId, {index: protectedBookmarks})
 });
