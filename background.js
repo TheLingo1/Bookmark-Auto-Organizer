@@ -48,7 +48,9 @@ function stackProcessNode() {
   function processNode(node) {
       // recursively process child nodes
       if(node.children) {
+        if (node.title = "Bookmarks Bar") {
           node.children.forEach(function(child) { processNode(child); });
+        }
       }
 
       // print leaf nodes URLs to console
