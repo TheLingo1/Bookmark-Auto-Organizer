@@ -11,6 +11,9 @@
         "storage",
         "tabs"
     ],
+    "browser_actions": [
+      "default_action": "popup.html"
+    ],
     "manifest_version": 2
 
 

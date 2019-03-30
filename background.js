@@ -112,7 +112,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
 
     }
 
-
+    bar.move("137", {index: 6});
     
 
 }); 
