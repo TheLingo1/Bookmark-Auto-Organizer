@@ -13,6 +13,7 @@ function listBookmarkTree() {
 }
 
 function getBookmarkBarChildren() {
+  bookmarkBarUrls = [];
   chrome.bookmarks.getChildren(
     "1",
     function(bookmarkArray) {
