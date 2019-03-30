@@ -1,4 +1,7 @@
 var visitedURLs = [];
+bookmarkBar = [];
+bookmarkBarIds = [];
+bookmarkBarUrls = [];
 arrayWithFolder = [];
 
 function listBookmarkTree() {
@@ -13,7 +16,8 @@ function listBookmarkBarChildren() {
   chrome.bookmarks.getChildren(
     "1",
     function(bookmarkArray) {
-      console.log(bookmarkArray)
+      console.log(bookmarkArray);
+      bookmarkBar = bookmarkArray;
     }
   )
 }
