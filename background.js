@@ -100,7 +100,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
             console.log("Yes! " + Pos)
             console.log(bookmarkBarIds[Pos])
 
-            bar.move(bookmarkBarIds[Pos], {index: 3})
+            bar.move(bookmarkBarIds[Pos], {index: 0})
 
         } else {
             console.log("No!")
