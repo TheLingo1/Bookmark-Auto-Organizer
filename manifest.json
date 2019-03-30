@@ -3,12 +3,15 @@
   "version": "0.1",
   "description": "organizes bookmarks, work in progress",
   "background": {
-  "scripts": ["background.js"],
-  "persistent": false
+    "scripts": ["background.js"],
+    "persistent": false
   },
   "permissions": [
     "bookmarks",
     "storage"
   ],
+  "browser_action": {
+    "default_action": "popup.html"
+  },
   "manifest_version": 2
 }
