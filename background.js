@@ -9,9 +9,18 @@ function listBookmarkTree() {
 }
 
 // This function doesn't work
-function listBookmarkBar() {
+function listBookmarkBar(id) {
   chrome.bookmarks.get(
-    0,
+    id,
+    function(bookmarkArray) {
+      console.log(bookmarkArray)
+    }
+  )
+}
+
+function listBookmarkBarChildren() {
+  chrome.bookmarks.getChildren(
+    "1",
     function(bookmarkArray) {
       console.log(bookmarkArray)
     }
