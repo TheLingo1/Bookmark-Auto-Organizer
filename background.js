@@ -72,35 +72,32 @@ function stackProcessNode() {
 
 getBookmarkBarChildren(); // This gets all of the bookmarkTreeNodes in the Bookmark Bar, and saves them to an array, so that th
 
+//
 chrome.tabs.onCreated.addListener(function(tab){
     if (tab.url) {
-
-        if (bookmarkBarUrls.includes(tab.url)) {
-
-            
-
-            var Pos = bookmarkBarUrls.indexOf(tab.url)
-            console.log("Yes! " + Pos)
-        } else {
-            console.log("No!")
-        }
-
+      if (bookmarkBarUrls.includes(tab.url)) {
+        var Pos = bookmarkBarUrls.indexOf(tab.url)
+        console.log("Yes! " + Pos)
+      } else {
+        console.log("No!")
+      }
     }
 });    
+
+//
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
     if (tab.url) {
-
-        if (bookmarkBarUrls.includes(tab.url)) {
-
-            
-
-            var Pos = bookmarkBarUrls.indexOf(tab.url)
-            console.log("Yes! " + Pos)
-        } else {
-            console.log("No!")
-        }
-
+      if (bookmarkBarUrls.includes(tab.url)) {
+        var Pos = bookmarkBarUrls.indexOf(tab.url)
+        console.log("Yes! " + Pos)
+      } else {
+        console.log("No!")
+      }
     }
     
 
 }); 
+
+function organizeBar(){
+
+}
