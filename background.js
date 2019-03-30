@@ -22,7 +22,7 @@ function process_bookmark(bookmarks) {
     for (var i =0; i < bookmarks.length; i++) {
         var bookmark = bookmarks[i];
         if (bookmark.url) {
-            console.log("bookmark: "+ bookmark.url);
+            console.log("bookmark: " + bookmark.url);
         }
 
         if (bookmark.children) {
