@@ -1,4 +1,5 @@
 var visitedURLs = [];
+arrayWithFolder = [];
 
 function listBookmarkTree() {
   chrome.bookmarks.getTree(
@@ -6,16 +7,6 @@ function listBookmarkTree() {
       console.log(bookmarkArray)
     }
   );
-}
-
-// This function doesn't work
-function listBookmarkBar(id) {
-  chrome.bookmarks.get(
-    id,
-    function(bookmarkArray) {
-      console.log(bookmarkArray)
-    }
-  )
 }
 
 function listBookmarkBarChildren() {
@@ -27,13 +18,13 @@ function listBookmarkBarChildren() {
   )
 }
 
-
 function process_bookmark(bookmarks) {
 
     for (var i =0; i < bookmarks.length; i++) {
         var bookmark = bookmarks[i];
         if (bookmark.url) {
-            console.log("bookmark: " + bookmark.url);
+          arrayWithFolder.push(bookmark.url);
+          console.log(bookmark.title + ": " + bookmark.url);
         }
 
         if (bookmark.children) {
@@ -63,6 +54,8 @@ function stackProcessNode() {
       }
 
       // print leaf nodes URLs to console
-      if(node.url) { console.log(node.url); }
+      if(node.url) {
+        console.log(node.url);
+      }
   }
 }
