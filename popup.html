@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <script src="background.js"></script>
     <meta charset="utf-8">
     <title></title>
   </head>
-  <body>
-    <input id="numberInput" type="number" min="0" max="20">
-    
-    <button id="button">Save</button>
+  <body width="100" height = "100">
+      <h2>Settings:</h2>
+    <h4>Number of protected bookmarks:</h4>
+    <input id="numberInput" type="number" min="0">
+    <button id="button" onclick="setIndex()">Save</button>
+    <script>
+        function setIndex(){
+            chrome.storage.sync.set({'value': document.getElementById("numberInput").value}, function(){
+            console.log("number stored")});
+        }
+    </script>
   </body>
 </html>
