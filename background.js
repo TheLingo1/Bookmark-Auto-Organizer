@@ -1,3 +1,5 @@
+var visitedURLs = [];
+
 function listBookmarkTree() {
   chrome.bookmarks.getTree(
     function(bookmarkArray) {
@@ -9,7 +11,7 @@ function listBookmarkTree() {
 // This function doesn't work
 function listBookmarkBar() {
   chrome.bookmarks.get(
-    1,
+    0,
     function(bookmarkArray) {
       console.log(bookmarkArray)
     }
@@ -31,6 +33,7 @@ function process_bookmark(bookmarks) {
     }
 }
 
-
-console.log("listing bookmarks: " );
-chrome.bookmarks.getTree( process_bookmark );
+function processBookmarks() {
+  console.log("listing bookmarks: " );
+  chrome.bookmarks.getTree( process_bookmark );
+}
