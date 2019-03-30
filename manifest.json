@@ -8,7 +8,7 @@
   },
   "permissions": [
     "bookmarks",
-    "storage",
+		"storage",
     "tabs"
   ],
 	"browser_action": {
