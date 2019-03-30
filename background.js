@@ -6,7 +6,7 @@ function listBookmarkTree() {
   );
 }
 
-/* This function doesn't work
+// This function doesn't work
 function listBookmarkBar() {
   chrome.bookmarks.get(
     1,
@@ -15,7 +15,7 @@ function listBookmarkBar() {
     }
   )
 }
-*/
+
 
 function process_bookmark(bookmarks) {
 
