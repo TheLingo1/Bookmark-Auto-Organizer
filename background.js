@@ -1,6 +1,8 @@
-var bookmarkBar = [];
+var visitedURLs = []; // not used
+bookmarkBar = []; // probably not needed
 bookmarkBarIds = [];
 bookmarkBarUrls = [];
+arrayWithFolder = []; // not used
 bar = chrome.bookmarks;
 protectedBookmarks = 1;
 
