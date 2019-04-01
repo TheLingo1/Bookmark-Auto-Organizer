@@ -7,7 +7,7 @@ protectedBookmarks = 1;
 function listBookmarkTree() {
   bar.getTree(
     function(bookmarkArray) {
-      console.log(bookmarkArray)
+      console.log(bookmarkArray);
     }
   );
 }
@@ -22,7 +22,7 @@ function getBookmarkBarChildren() {
         bookmarkBarUrls.push(bookmarkArray[i].url);
       }
     }
-  )
+  );
 }
 
 function process_bookmark(bookmarks) {
@@ -55,7 +55,7 @@ function stackProcessNode() {
   function processNode(node) {
       // recursively process child nodes
       if(node.children) {
-        if (node.title = "Bookmarks Bar") {
+        if (node.title == "Bookmarks Bar") {
           node.children.forEach(function(child) { processNode(child); });
         }
       }
@@ -76,10 +76,10 @@ chrome.tabs.onCreated.addListener(function(tab){
 
 
 
-            var Pos = bookmarkBarUrls.indexOf(tab.url)
-            console.log("Yes! " + Pos)
+            var Pos = bookmarkBarUrls.indexOf(tab.url);
+            console.log("Yes! " + Pos);
         } else {
-            console.log("No!")
+            console.log("No!");
         }
 
     }
