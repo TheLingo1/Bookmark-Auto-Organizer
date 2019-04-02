@@ -4,7 +4,7 @@ bookmarkBarIds = [];
 bookmarkBarUrls = [];
 arrayWithFolder = [];
 bar = chrome.bookmarks;
-protectedBookmarks = 1;
+
 
 function listBookmarkTree() {
   bar.getTree(
@@ -95,14 +95,20 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     if (changeInfo.url) {
 
         if (bookmarkBarUrls.includes(tab.url)) {
-
-
+          var protectedBookmarksS;
+          var protectedBookmarksI;
+          chrome.storage.local.get('key', function(results) {
+             protectedBookmarksS = results.key;
+             var protectedBookmarksI = parseInt(protectedBookmarksS, 10);
+              console.log(results.key);});
+              console.log(protectedBookmarksI);
+          
 
             Pos = bookmarkBarUrls.indexOf(tab.url)
             console.log("Yes! " + Pos)
             console.log(bookmarkBarIds[Pos])
 
-            bar.move(bookmarkBarIds[Pos], {index: protectedBookmarks})
+            bar.move(bookmarkBarIds[Pos], {index: protectedBookmarksI})
 
         } else {
             console.log("No!")
