@@ -1,15 +1,32 @@
-var visitedURLs = []; // not used
-bookmarkBar = []; // probably not needed
+var visitedURLs = [];
+bookmarkBar = [];
 bookmarkBarIds = [];
 bookmarkBarUrls = [];
-arrayWithFolder = []; // not used
+arrayWithFolder = [];
 bar = chrome.bookmarks;
-protectedBookmarks = 1;
+
+var protectedBookmarksS;
+var protectedBookmarksI;
+
+chrome.runtime.onInstalled.addListener(function() {
+  protectedBookmarksI = 1
+
+
+});
+
+function SetProtBookmarks() {
+
+  chrome.storage.local.get('key', function(results) {
+    protectedBookmarksS = results.key;
+    protectedBookmarksI = parseInt(protectedBookmarksS, 10);
+     console.log(results.key);});
+
+}
 
 function listBookmarkTree() {
   bar.getTree(
     function(bookmarkArray) {
-      console.log(bookmarkArray);
+      console.log(bookmarkArray)
     }
   );
 }
@@ -18,13 +35,16 @@ function getBookmarkBarChildren() {
   bar.getChildren(
     "1",
     function(bookmarkArray) {
+      //console.log(bookmarkArray);
       bookmarkBar = bookmarkArray;
       for (i = 0; i < bookmarkArray.length; i++) {
         bookmarkBarIds.push(bookmarkArray[i].id);
         bookmarkBarUrls.push(bookmarkArray[i].url);
       }
+      //console.log(bookmarkBarIds);
+      //console.log(bookmarkBarUrls);
     }
-  );
+  )
 }
 
 function process_bookmark(bookmarks) {
@@ -57,7 +77,7 @@ function stackProcessNode() {
   function processNode(node) {
       // recursively process child nodes
       if(node.children) {
-        if (node.title == "Bookmarks Bar") {
+        if (node.title = "Bookmarks Bar") {
           node.children.forEach(function(child) { processNode(child); });
         }
       }
@@ -78,10 +98,10 @@ chrome.tabs.onCreated.addListener(function(tab){
 
 
 
-            var Pos = bookmarkBarUrls.indexOf(tab.url);
-            console.log("Yes! " + Pos);
+            var Pos = bookmarkBarUrls.indexOf(tab.url)
+            console.log("Yes! " + Pos)
         } else {
-            console.log("No!");
+            console.log("No!")
         }
 
     }
@@ -93,13 +113,14 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 
         if (bookmarkBarUrls.includes(tab.url)) {
 
-
+              
+          
 
             Pos = bookmarkBarUrls.indexOf(tab.url)
             console.log("Yes! " + Pos)
             console.log(bookmarkBarIds[Pos])
 
-            bar.move(bookmarkBarIds[Pos], {index: protectedBookmarks})
+            bar.move(bookmarkBarIds[Pos], {index: protectedBookmarksI})
 
         } else {
             console.log("No!")
