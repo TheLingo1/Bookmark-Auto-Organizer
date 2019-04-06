@@ -9,19 +9,30 @@ var protectedBookmarksS;
 var protectedBookmarksI;
 
 chrome.runtime.onInstalled.addListener(function() {
-  protectedBookmarksI = 1
+  
+
+  if (typeof protectedBookmarksI === "undefined") {
+
+    protectedBookmarksI = 1 
+     
+ } 
 
 
 });
 
 function SetProtBookmarks() {
-
+  
   chrome.storage.local.get('key', function(results) {
     protectedBookmarksS = results.key;
     protectedBookmarksI = parseInt(protectedBookmarksS, 10);
      console.log(results.key);});
 
 }
+
+chrome.storage.local.get('key', function(results) {
+  protectedBookmarksS = results.key;
+  protectedBookmarksI = parseInt(protectedBookmarksS, 10);
+   console.log(results.key);});
 
 function listBookmarkTree() {
   bar.getTree(
@@ -107,12 +118,22 @@ chrome.tabs.onCreated.addListener(function(tab){
     }
 });
 
+chrome.storage.onChanged.addListener(function(){
+
+  SetProtBookmarks()
+
+});
+
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     var Pos;
+  
+    
+    
+    
     if (changeInfo.url) {
 
         if (bookmarkBarUrls.includes(tab.url)) {
-
+            
               
           
 
