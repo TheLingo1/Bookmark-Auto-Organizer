@@ -9,19 +9,19 @@ var protectedBookmarksS;
 var protectedBookmarksI;
 
 chrome.runtime.onInstalled.addListener(function() {
-  
+
 
   if (typeof protectedBookmarksI === "undefined") {
 
-    protectedBookmarksI = 1 
-     
- } 
+    protectedBookmarksI = 1
+
+ }
 
 
 });
 
 function SetProtBookmarks() {
-  
+
   chrome.storage.local.get('key', function(results) {
     protectedBookmarksS = results.key;
     protectedBookmarksI = parseInt(protectedBookmarksS, 10);
@@ -126,16 +126,16 @@ chrome.storage.onChanged.addListener(function(){
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     var Pos;
-  
-    
-    
-    
+
+
+
+
     if (changeInfo.url) {
 
         if (bookmarkBarUrls.includes(tab.url)) {
-            
-              
-          
+
+
+
 
             Pos = bookmarkBarUrls.indexOf(tab.url)
             console.log("Yes! " + Pos)
@@ -153,5 +153,5 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 chrome.bookmarks.onCreated.addListener(function(bookmarkId, bookmark) {
   bookmarkBarIds.push(bookmarkId);
   bookmarkBarUrls.push(bookmark.url);
-  bar.move(bookmarkId, {index: protectedBookmarks})
+  bar.move(bookmarkId, {index: protectedBookmarksI})
 });
