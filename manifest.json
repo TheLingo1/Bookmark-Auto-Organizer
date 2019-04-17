@@ -1,6 +1,6 @@
 {
-  "name": "Bookmark Auto-Manager",
-	"description": "Sorts your bookmarks from recently used to least used.",
+  "name": "histor.y",
+	"description": "This extension sorts your bookmarks by most recently used.",
   "version": "1.0",
   "background": {
     "scripts": ["background.js"],
@@ -16,7 +16,5 @@
     "default_popup": "popup.html"
   },
   "manifest_version": 2
-  
+
 }
-
-
