@@ -6,6 +6,7 @@
     "scripts": ["background.js"],
     "persistent": false
   },
+  "icons": { "128": "icon/Histor.y_Logo_128.png" },
   "permissions": [
     "bookmarks",
 		"storage",
