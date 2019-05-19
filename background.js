@@ -140,8 +140,12 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
             Pos = bookmarkBarUrls.indexOf(tab.url)
             console.log("Yes! " + Pos)
             console.log(bookmarkBarIds[Pos])
+            if (Pos > protectedBookmarksI) {
+              bar.move(bookmarkBarIds[Pos], {index: protectedBookmarksI});
+            } else {
+              console.log("Bookmark in protected range")
+            }
 
-            bar.move(bookmarkBarIds[Pos], {index: protectedBookmarksI})
 
         } else {
             console.log("No!")
