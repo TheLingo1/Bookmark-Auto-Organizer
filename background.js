@@ -100,6 +100,15 @@ function stackProcessNode() {
   }
 }
 
+// from https://stackoverflow.com/questions/5306680/move-an-array-element-from-one-array-position-to-another
+function move(array, oldIndex, newIndex) {
+    if (newIndex >= array.length) {
+        newIndex = array.length - 1;
+    }
+    array.splice(newIndex, 0, array.splice(oldIndex, 1)[0]);
+    return array;
+}
+
 getBookmarkBarChildren(); // This gets all of the bookmarkTreeNodes in the Bookmark Bar, and saves them to an array, so that th
 
 chrome.tabs.onCreated.addListener(function(tab){
@@ -142,6 +151,8 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
             console.log(bookmarkBarIds[Pos])
             if (Pos > protectedBookmarksI) {
               bar.move(bookmarkBarIds[Pos], {index: protectedBookmarksI});
+              move(bookMarbBarIds, Pos, protectedBookmarksI);
+              move(bookMarbBarUrls, Pos, protectedBookmarksI);
             } else {
               console.log("Bookmark in protected range")
             }
