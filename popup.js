@@ -9,7 +9,7 @@ function setIndex(){
 
 
 window.onload = function() {
-  chrome.storage.local.get('key', function(results) {
+  chrome.storage.sync.get('key', function(results) {
     document.getElementById('numberInput').value = results.key;
   });
 };
