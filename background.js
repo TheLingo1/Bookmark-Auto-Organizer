@@ -151,8 +151,8 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
             console.log(bookmarkBarIds[Pos])
             if (Pos > protectedBookmarksI) {
               bar.move(bookmarkBarIds[Pos], {index: protectedBookmarksI});
-              move(bookMarbBarIds, Pos, protectedBookmarksI);
-              move(bookMarbBarUrls, Pos, protectedBookmarksI);
+              move(bookMarkBarIds, Pos, protectedBookmarksI);
+              move(bookMarkBarUrls, Pos, protectedBookmarksI);
             } else {
               console.log("Bookmark in protected range")
             }
