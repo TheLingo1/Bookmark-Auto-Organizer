@@ -22,14 +22,14 @@ chrome.runtime.onInstalled.addListener(function() {
 
 function SetProtBookmarks() {
 
-  chrome.storage.local.get('key', function(results) {
+  chrome.storage.sync.get('key', function(results) {
     protectedBookmarksS = results.key;
     protectedBookmarksI = parseInt(protectedBookmarksS, 10);
      console.log(results.key);});
 
 }
 
-chrome.storage.local.get('key', function(results) {
+chrome.storage.sync.get('key', function(results) {
   protectedBookmarksS = results.key;
   protectedBookmarksI = parseInt(protectedBookmarksS, 10);
    console.log(results.key);});
